@@ -3,29 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misi Rahasia Besok ✨</title>
+    <title>Sinyal Kedekatan ✨</title>
     <style>
+        /* Background Ramai Tapi Fresh & Playful (Gradasi Peach ke Kuning Cerah) */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #1a1a2e;
-            font-family: sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             overflow: hidden;
+            position: relative;
         }
+
+        /* Hujan Bintang & Kilauan Lucu di Background */
+        .sparkle-fall {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 1;
+            user-select: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Kartu Pop-up Modern */
         .card {
-            background: #222831;
-            color: #eceff1;
-            padding: 30px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             text-align: center;
-            max-width: 350px;
+            max-width: 380px;
             width: 90%;
-            border: 3px solid #00adb5;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 10;
+            border: 3px solid #ff758c;
         }
-        h2 { color: #00adb5; }
+        
+        h2 {
+            color: #d81159;
+            font-size: 22px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        p.sub-text {
+            color: #666;
+            font-size: 14px;
+            margin-top: -5px;
+            margin-bottom: 25px;
+        }
+
         .buttons {
             display: flex;
             justify-content: space-around;
@@ -33,153 +68,175 @@
             margin-top: 30px;
             height: 60px;
         }
+
         button {
-            padding: 12px 25px;
+            padding: 12px 28px;
             font-size: 16px;
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        #yesBtn { background: #00adb5; color: #222831; }
+
+        #yesBtn {
+            background: linear-gradient(45deg, #ff5e62, #ff9966);
+            color: white;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+        }
+
         #noBtn {
-            background: #ff2e63;
-            color: #fff;
+            background: linear-gradient(45deg, #bdc3c7, #2c3e50);
+            color: white;
             position: absolute;
-            transition: all 0.2s ease;
+            transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .time-grid {
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Grid Pilihan Waktu & Jam */
+        .time-options {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
         }
-        .time-box {
-            background: #393e46;
-            border: 2px solid #00adb5;
-            border-radius: 10px;
-            padding: 15px 5px;
-            cursor: pointer;
+
+        .time-btn {
+            background: white;
+            color: #d81159;
+            border: 2px solid #ff9a9e;
+            border-radius: 15px;
+            padding: 12px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            box-shadow: none;
         }
-        .time-box.selected { background: #00adb5; color: #222831; }
-        .input-container { margin-top: 20px; text-align: left; }
-        .input-place {
-            width: 100%;
-            padding: 10px;
+
+        .time-btn span.hour {
+            background: #ffe5ec;
+            padding: 4px 10px;
             border-radius: 8px;
-            border: 2px solid #393e46;
-            background: #393e46;
-            color: #fff;
-            box-sizing: border-box;
+            font-size: 13px;
+            font-weight: 600;
         }
-        .hidden { display: none !important; }
+
+        .time-btn:hover {
+            background: #ff5e62;
+            color: white;
+            border-color: #ff5e62;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
 
-    <!-- STEP 1 -->
+    <!-- STEP 1: Pertanyaan PDKT / HTS Santai -->
     <div id="step1" class="card">
-        <h3 id="hearts">❤️❤️❤️</h3>
-        <h2>Besok Luang Kan? Jalan Yuk.. 🤔✨</h2>
-        <p id="dialog">Gak ada penolakan ya, klik tombol di bawah!</p>
+        <h2>Besok luang gak? Jalan yuk, ada yang mau gua ceritain nih.. 🤔✨</h2>
+        <p class="sub-text">Bukan urusan negara kok, santai aja!</p>
         <div class="buttons">
-            <button id="yesBtn" onclick="nextStep()">Ayo! 🚀</button>
-            <button id="noBtn" onmouseover="tryReject()" onclick="tryReject()">Mager</button>
+            <button id="yesBtn" onclick="nextStep()">Ayuk, Gass! 🏃‍♂️</button>
+            <button id="noBtn" onmouseover="teleportButton()" onclick="onclick="teleportButton()"">Mager / Sibuk</button>
         </div>
     </div>
 
-    <!-- STEP 2 -->
+    <!-- STEP 2: Pilihan Waktu + Jam Detail -->
     <div id="step2" class="card hidden">
-        <h2>Pilih Jam & Tempat 🔐</h2>
-        <div class="time-grid">
-            <div class="time-box" id="t1" onclick="selectTime('Pagi (09:00)', 't1')">🌅 Pagi</div>
-            <div class="time-box" id="t2" onclick="selectTime('Siang (13:00)', 't2')">☀️ Siang</div>
-            <div class="time-box" id="t3" onclick="selectTime('Sore (16:30)', 't3')">🌆 Sore</div>
-            <div class="time-box" id="t4" onclick="selectTime('Malam (19:00)', 't4')">🌙 Malam</div>
+        <h2>Oke mantap, enaknya jam berapa? ⏰</h2>
+        <p class="sub-text">Cocokkan jadwal kita biar gak bentrok</p>
+        <div class="time-options">
+            <button class="time-btn" onclick="finish('Pagi (Jam 09:00)')">
+                <span>🌅 Pagi Segar</span> <span class="hour">09:00 WIB</span>
+            </button>
+            <button class="time-btn" onclick="finish('Siang (Jam 13:00)')">
+                <span>☀️ Siang Cari Makan</span> <span class="hour">13:00 WIB</span>
+            </button>
+            <button class="time-btn" onclick="finish('Sore (Jam 16:30)')">
+                <span>🌆 Sore Santai</span> <span class="hour">16:30 WIB</span>
+            </button>
+            <button class="time-btn" onclick="finish('Malam (Jam 19:00)')">
+                <span>🌙 Malam Cari Angin</span> <span class="hour">19:00 WIB</span>
+            </button>
         </div>
-        <div class="input-container">
-            <label>Ada saran tempat nongkrong? 👇</label>
-            <input type="text" id="tempat" class="input-place" placeholder="Ketik nama tempat di sini...">
-        </div>
-        <button style="background:#00adb5; color:#222831; width:100%; margin-top:15px; border-radius:10px;" onclick="submitStep2()">Kunci Jadwal 🔒</button>
     </div>
 
-    <!-- STEP 3 -->
+    <!-- STEP 3: Pesan Akhir (Cocok Buat Gebetan) -->
     <div id="step3" class="card hidden">
-        <h2>Misi Berhasil! 🏆</h2>
-        <p id="finalMessage" style="font-weight:bold; color:#00adb5;"></p>
-        <button onclick="sendToWhatsApp()" style="background:#25d366; color:#fff; width:100%; border-radius:10px;">Kirim ke WA 💬</button>
+        <h2>Deal ya! 🤝🔥</h2>
+        <p id="finalMessage" style="font-size: 16px; color: #333; font-weight: bold; line-height: 1.5;"></p>
+        <p style="font-size: 13px; color: #777;">Sampai ketemu besok! Jangan lupa mandi 😂</p>
     </div>
 
     <script>
-        let health = 3;
-        let selectedTimeValue = "";
-        const nomorWA = "628123456789"; // Ganti dengan nomor WA kamu
+        let autoMoveInterval;
 
-        // Fungsi membuat tombol kabur otomatis sejak awal
-        setInterval(function() {
-            const noBtn = document.getElementById('noBtn');
-            const step1 = document.getElementById('step1');
-            if (noBtn && !step1.classList.contains('hidden')) {
-                const x = Math.random() * 100 - 50;
-                const y = Math.random() * 40 - 20;
-                noBtn.style.left = "calc(50% + " + x + "px)";
-                noBtn.style.top = "calc(15% + " + y + "px)";
-            }
-        }, 800);
+        window.onload = function() {
+            startAutoMove();
+            createSparkles(); // Efek kilauan bintang di background
+        };
 
-        function tryReject() {
-            const noBtn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-
-            if (health > 1) {
-                health--;
-                document.getElementById('hearts').innerText = "❤️".repeat(health) + "🖤".repeat(3 - health);
-                if(health === 2) document.getElementById('dialog').innerText = "Dibilang gak boleh nolak! 😤";
-                if(health === 1) document.getElementById('dialog').innerText = "Nyawa tinggal 1 nih, klik tombol hijau aja! 💥";
-            } else {
-                noBtn.classList.add('hidden');
-                document.getElementById('dialog').innerText = "Nyawa habis! Harus ikut jalan! 😜";
+        // 1. Efek Background Kilauan Bintang & Hati Tipis
+        function createSparkles() {
+            const icons = ['✨', '✨', '⭐', '🌸', '🎵'];
+            for (let i = 0; i < 25; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle-fall');
+                sparkle.innerText = icons[Math.floor(Math.random() * icons.length)];
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(sparkle);
             }
         }
 
+        // 2. Pergerakan Otomatis Tombol 'Mager'
+        function startAutoMove() {
+            autoMoveInterval = setInterval(() => {
+                const noBtn = document.getElementById('noBtn');
+                if (noBtn && !noBtn.closest('.hidden')) {
+                    const x = Math.random() * 140 - 70; 
+                    const y = Math.random() * 80 - 40; 
+                    noBtn.style.left = `calc(50% + ${x}px)`;
+                    noBtn.style.top = `calc(15% + ${y}px)`;
+                }
+            }, 700);
+        }
+
+        // 3. Teleportasi Jika Berhasil Didekati
+        function teleportButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        // 4. Pindah Langkah
         function nextStep() {
+            clearInterval(autoMoveInterval); 
             document.getElementById('step1').classList.add('hidden');
             document.getElementById('step2').classList.remove('hidden');
         }
 
-        function selectTime(waktu, id) {
-            selectedTimeValue = waktu;
-            document.querySelectorAll('.time-box').forEach(function(box) { box.classList.remove('selected'); });
-            document.getElementById(id).classList.add('selected');
-        }
-
-        function submitStep2() {
-            if (selectedTimeValue === "") {
-                alert("Pilih opsi waktunya dulu! 😁");
-                return;
-            }
-            const tempat = document.getElementById('tempat').value || "Terserah";
+        // 5. Konfirmasi Akhir
+        function finish(waktu) {
             document.getElementById('step2').classList.add('hidden');
             document.getElementById('step3').classList.remove('hidden');
-            document.getElementById('finalMessage').innerText = "Fix ketemu besok jam " + selectedTimeValue + " di [ " + tempat + " ]";
+            document.getElementById('finalMessage').innerText = `Sip, fix ketemu besok pas ${waktu} ya. Nanti kabarin aja kalau mau berangkat! 😎`;
         }
-
-        function sendToWhatsApp() {
-    const tempat = document.getElementById('tempat').value || "Terserah";
-    
-    // FORMAT BARU: Menggunakan tautan universal wa.me yang disukai WhatsApp
-    // PENTING: Ganti 628123456789 di bawah ini dengan NOMOR WHATSAPP KAMU SENDIRI
-    const nomorSaya = "6283151972260"; 
-    
-    const teks = "Woi! Gua udah isi: %0A⏰ Waktu: " + selectedTimeValue + "%0A📍 Tempat: " + tempat + "%0A%0AFix besok ya! 😎";
-    
-    // Membuka tab baru secara aman agar tidak dianggap sebagai bug/spam oleh browser
-    window.open("https://wa.me/" + nomorSaya + "?text=" + teks, "_blank");
-}
     </script>
 </body>
 </html>
